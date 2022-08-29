@@ -26,7 +26,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/test', function(){
     dd(Student::with('marks')
-        //where('std_id', 143)->
         ->where('std_id', 1578)->get()
     );
 });
