@@ -22,6 +22,6 @@ Route::get('/', function () {
 Route::get('/test', function(){
     dd(Student::with('marks')
         //where('std_id', 143)->
-        ->where('std_id', 1578)
+        ->where('std_id', 1578)->get()
     );
 });
