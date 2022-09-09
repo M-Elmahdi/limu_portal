@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Role;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,14 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Role::create([
-            'name' => 'Admin',
-            'desc' => 'blabla'
-        ]);
+        Role::create(['name' => 'Super Admin']);
 
-        Role::create([
-            'name' => 'Student',
-            'desc' => 'blabla'
-        ]);
+        Role::create(['name' => 'Student']);
+
+        Role::create(['name' => 'Faculty']);
     }
 }

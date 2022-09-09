@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Models\Student;
+use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Faculty\FacultyHomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,16 +16,45 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.home');
-})->middleware('auth');
+//Navigaton Manager
+Route::get('/navigator')->middleware('navigator')->name('navigator');
+Route::get('/')->middleware('navigator');
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+/**
+ *
+ * Admin Routes
+ *
+ */
+Route::group(['prefix' => 'admin', 'middleware' => ['role:Super Admin']], function(){
+    
+    Route::get('users', [AdminHomeController::class, 'index'])->name('admin.index');
 
-Route::get('/test', function(){
-    dd(Student::with('marks')
-        ->where('std_id', 1578)->get()
-    );
+});
+
+
+/**
+ * 
+ * Student Routes
+ * 
+ */
+Route::group(['prefix' => 'student', 'middleware' => ['role:Student']], function(){
+    
+    Route::get('users', function(){
+        return 'Student Dash';
+    })->name('student.index');
+
+});
+
+
+/**
+ * 
+ * Faculty Routes
+ * 
+ */
+Route::group(['prefix' => 'faculty', 'middleware' => ['role:Faculty']], function(){
+    
+    Route::get('users', [FacultyHomeController::class, 'index'])->name('faculty.index');
+
 });
