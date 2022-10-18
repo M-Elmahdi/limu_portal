@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\sis\Faculty;
+use App\Models\sis\StudentDetail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
@@ -46,6 +48,10 @@ class User extends Authenticatable
     ];
 
     public function faculty(){
-       return $this->belongsTo(Faculty::class);
+       return $this->belongsTo(Faculty::class, 'faculty_id', 'faculty_id');
+    }
+
+    public function student(){
+        return $this->belongsTo(StudentDetail::class, 'std_id', 'std_id');
     }
 }

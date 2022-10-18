@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->bigInteger(column: 'faculty_id', unsigned: true)->nullable();
+            $table->bigInteger(column: 'std_id', unsigned: true)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

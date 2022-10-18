@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Faculty;
 use App\Models\Role;
+use App\Models\sis\Faculty;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -43,6 +43,7 @@ class RegisterController extends Controller
     {
         $faculties = Faculty::all();
         $roles = Role::all();
+
         return view('auth.register', compact('roles', 'faculties'));
     }
 

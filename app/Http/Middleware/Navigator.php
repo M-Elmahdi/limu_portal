@@ -25,7 +25,7 @@ class Navigator
         }
 
         if (auth()->user()->hasRole('Faculty')) {
-            return redirect()->route('faculty.index');
+            return redirect()->route('faculty.batches');
         }
 
         if (auth()->user()->hasRole('Student')) {

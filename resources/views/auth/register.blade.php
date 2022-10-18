@@ -118,7 +118,7 @@
                     name="faculty_id">
                       <option selected disabled>Choose a Faculty</option>
                         @foreach ($faculties as $faculty)
-                            <option value="{{ $faculty->id }}">{{ $faculty->faculty_name }}</option>
+                            <option value="{{ $faculty->faculty_id }}">{{ $faculty->faculty_name }}</option>
                         @endforeach
                     </select>
 
