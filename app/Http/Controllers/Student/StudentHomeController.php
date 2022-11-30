@@ -51,7 +51,7 @@ class StudentHomeController extends Controller
                                     ->with(['sub_exam_student_results' => function($query){ $query->where('std_id', auth()->user()->std_id); },
                                     'sub_exam_student_results.sub_exam_eval'])
                                     ->with(['sub_exam_reset_student_results' => function($query){ $query->where('std_id', auth()->user()->std_id); },
-                                        'sub_exam_reset_student_results.sub_exam_eval'])
+                                        'sub_exam_reset_student_results.sub_reset_exam_eval'])
                                     ->where('course_id', $course->course->course_id)
                                     ->where('batch_id', $batch_year->batch->batch_id)
                                     ->where('year_id', $batch_year->year->semester_id)
