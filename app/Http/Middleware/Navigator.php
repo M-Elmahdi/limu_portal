@@ -21,7 +21,7 @@ class Navigator
         }
 
         if (auth()->user()->hasRole('Super Admin')) {
-            return redirect()->route('admin.index');
+            return redirect()->route('admin.home');
         }
 
         if (auth()->user()->hasRole('Faculty')) {
@@ -29,7 +29,7 @@ class Navigator
         }
 
         if (auth()->user()->hasRole('Student')) {
-            return redirect()->route('student.index');
+            return redirect()->route('student.home');
         }
     }
 }

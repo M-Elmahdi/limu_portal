@@ -50,7 +50,7 @@ Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 've
  */
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:Super Admin', 'verified']], function(){
     
-    Route::get('home', [AdminHomeController::class, 'index'])->name('admin.index');
+    Route::get('home', [AdminHomeController::class, 'index'])->name('admin.home');
 
 });
 
