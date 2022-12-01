@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\Faculty\FacultyHomeController;
-use App\Http\Controllers\student\StudentHomeController;
+use App\Http\Controllers\Student\StudentHomeController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -23,11 +23,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/navigator')->middleware('navigator')->name('navigator');
 Route::get('/')->middleware('navigator');
 
-Auth::routes();
-
 Auth::routes([
-    'register' => false
+    'register' => false,
 ]);
+
+Auth::routes();
 
 
 /** 
@@ -75,11 +75,8 @@ Route::group(['prefix' => 'faculty', 'middleware' => ['auth', 'role:Faculty', 'v
  */
 Route::group(['prefix' => 'student', 'middleware' => ['auth', 'role:Student', 'verified']], function(){
     Route::get('home', [StudentHomeController::class, 'index'])->name('student.home');
-    Route::get('someshit', function(){
-        return 'someshit';
-    })->name('student.someshit');
 });
 
 
-Route::get('/test', [TestController::class, 'bla'])->name('test');
+//Route::get('/test', [TestController::class, 'bla'])->name('test');
 
