@@ -3,9 +3,7 @@
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\EmailVerificationController;
 use App\Http\Controllers\Faculty\FacultyHomeController;
-use App\Http\Controllers\ResultShowController;
 use App\Http\Controllers\student\StudentHomeController;
-use App\Http\Controllers\StudentResultController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -77,6 +75,9 @@ Route::group(['prefix' => 'faculty', 'middleware' => ['auth', 'role:Faculty', 'v
  */
 Route::group(['prefix' => 'student', 'middleware' => ['auth', 'role:Student', 'verified']], function(){
     Route::get('home', [StudentHomeController::class, 'index'])->name('student.home');
+    Route::get('someshit', function(){
+        return 'someshit';
+    })->name('student.someshit');
 });
 
 
