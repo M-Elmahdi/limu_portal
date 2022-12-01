@@ -27,6 +27,10 @@ Route::get('/')->middleware('navigator');
 
 Auth::routes();
 
+Auth::route([
+    'register' => false
+]);
+
 
 /** 
  * 
@@ -72,7 +76,7 @@ Route::group(['prefix' => 'faculty', 'middleware' => ['auth', 'role:Faculty', 'v
  * 
  */
 Route::group(['prefix' => 'student', 'middleware' => ['auth', 'role:Student', 'verified']], function(){
-    Route::get('home', [StudentHomeController::class, 'index'])->name('student.index');
+    Route::get('home', [StudentHomeController::class, 'index'])->name('student.home');
 });
 
 
