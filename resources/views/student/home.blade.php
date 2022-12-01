@@ -10,7 +10,7 @@
     <div class="row d-flex justify-content-center">
       <div class="col">
         <div class="nav-align-top mb-2 mt-4">
-          <ul class="nav nav-tabs m-auto" role="tablist">
+          <ul class="nav nav-tabs d-flex justify-content-center m-1 rounded" role="tablist">
 
           <li class="nav-item nav-pills">
             <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#overview" aria-controls="navs-top-home" aria-selected="true">
@@ -83,19 +83,19 @@
 
                   <div class="row justify-content-center">
                     <div class="col-auto">
-                      <div class="badge bg-primary">
+                      <div class="badge bg-primary m-1">
                         ECTS Acquired <i class="bx bx-arrow-from-left lg mb-1"></i> <span>{{ $courses['total_ects'] }}</span>
                       </div>
                     </div>
 
                     <div class="col-auto">
-                      <div class="badge bg-primary">
+                      <div class="badge bg-primary m-1">
                         Accumulative Average <i class="bx bx-arrow-from-left lg mb-1"></i> <span>{{ round($courses['new_average'], 2) }}</span>%
                       </div>
                     </div>
                   </div>
                   
-                  <ul>
+                  <ul class="p-0">
                     @foreach ($courses['courses'] as $course)
                  
                     <div class="accordion mt-3" id="accordionExample">
