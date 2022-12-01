@@ -210,7 +210,7 @@
             <!-- Title of the Page -->
             <div class="navbar-nav align-items-center">
               <div class="nav-item d-flex align-items-center fw-bold">
-                <img class="col-md-5 col-sm-2 m-auto" src="{{ asset('assets/img/limu_logos/limu_wide_logo.png') }}" alt="">
+                <img class="col-10 col-md-4 col-sm-2" src="{{ asset('assets/img/limu_logos/limu_wide_logo.png') }}" alt="">
               </div>
             </div>
             <!-- /Title of the Page -->
