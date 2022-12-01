@@ -27,7 +27,7 @@ Route::get('/')->middleware('navigator');
 
 Auth::routes();
 
-Auth::route([
+Auth::routes([
     'register' => false
 ]);
 
