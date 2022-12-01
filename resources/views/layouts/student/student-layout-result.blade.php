@@ -21,13 +21,14 @@
               <!-- Title of the Page -->
               <div class="navbar-nav align-items-center">
                 <div class="nav-item d-flex align-items-center fw-bold">
-                  <img class="col-md-4 col-sm-2" src="{{ asset('assets/img/limu_logos/limu_wide_logo.png') }}" alt="">
+                  <img class="col-10 col-md-4 col-sm-2" src="{{ asset('assets/img/limu_logos/limu_wide_logo.png') }}" alt="">
                 </div>
               </div>
               <!-- /Title of the Page -->
 
               <!-- User -->
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                   <div class="avatar avatar-online">
                     <img src="{{asset('assets/img/avatars/bx-user-circle.svg')}}" alt class="w-px-40 h-auto rounded-circle" />
@@ -37,13 +38,8 @@
                   <li>
                     <a class="dropdown-item" href="#">
                       <div class="d-flex">
-                        <div class="flex-shrink-0 me-3">
-                          <div class="avatar avatar-online">
-                            <img src="{{asset('assets/img/avatars/bx-user-circle.svg')}}" alt class="w-px-40 h-auto rounded-circle" />
-                          </div>
-                        </div>
                         <div class="flex-grow-1">
-                          <span class="fw-semibold d-block">{{ auth()->user()->student->std_english_name }}</span>
+                          <div class="row fw-semibold d-block" style="word-break: break-word">{{ auth()->user()->student->std_english_name }}</div>
                           <small class="text-muted">{{auth()->user()->getRoleNames()->first()}}</small>
                         </div>
                       </div>
@@ -53,7 +49,7 @@
                     <div class="dropdown-divider"></div>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="">
                       <i class="bx bx-cog me-2"></i>
                       <span class="align-middle">Settings</span>
                     </a>
