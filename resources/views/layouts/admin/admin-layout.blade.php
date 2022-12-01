@@ -11,7 +11,7 @@
         <div class="app-brand demo">
           <a href="index.html" class="app-brand-link">
             <span class="app-brand-logo demo">
-              <svg
+              {{-- <svg
                 width="25"
                 viewBox="0 0 25 42"
                 version="1.1"
@@ -64,7 +64,7 @@
                     </g>
                   </g>
                 </g>
-              </svg>
+              </svg> --}}
             </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2">LIMU Portal</span>
           </a>
@@ -79,14 +79,14 @@
         <ul class="menu-inner py-1">
           <!-- Dashboard -->
           <li class="menu-item active">
-            <a href="index.html" class="menu-link">
+            <a href="{{ route('faculty.batches') }}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
             </a>
           </li>
 
           <!-- Layouts -->
-          <li class="menu-item">
+          {{-- <li class="menu-item">
             <a href="" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-layout"></i>
               <div data-i18n="Layouts">Layouts</div>
@@ -119,8 +119,8 @@
                 </a>
               </li>
             </ul>
-          </li>
-
+          </li> --}}
+{{-- 
           <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>
           </li>
@@ -146,8 +146,8 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="menu-item">
+          </li> --}}
+          {{-- <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
               <div data-i18n="Authentications">Authentications</div>
@@ -169,8 +169,8 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="menu-item">
+          </li> --}}
+          {{-- <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-cube-alt"></i>
               <div data-i18n="Misc">Misc</div>
@@ -187,7 +187,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
         </ul>
       </aside>
       <!-- / Menu -->
@@ -210,7 +210,7 @@
             <!-- Title of the Page -->
             <div class="navbar-nav align-items-center">
               <div class="nav-item d-flex align-items-center fw-bold">
-                Libyan International Medical University
+                <img class="col-md-5 col-sm-2 m-auto" src="{{ asset('assets/img/limu_logos/limu_wide_logo.png') }}" alt="">
               </div>
             </div>
             <!-- /Title of the Page -->
@@ -222,7 +222,7 @@
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                   <div class="avatar avatar-online">
-                    <img src="../assets/img/avatars/bx-user-circle.svg" alt class="w-px-40 h-auto rounded-circle" />
+                    <img src="{{asset('assets/img/avatars/bx-user-circle.svg')}}" alt class="w-px-40 h-auto rounded-circle" />
                   </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -231,12 +231,12 @@
                       <div class="d-flex">
                         <div class="flex-shrink-0 me-3">
                           <div class="avatar avatar-online">
-                            <img src="../assets/img/avatars/bx-user-circle.svg" alt class="w-px-40 h-auto rounded-circle" />
+                            <img src="{{ asset('assets/img/avatars/bx-user-circle.svg')}}" alt class="w-px-40 h-auto rounded-circle" />
                           </div>
                         </div>
                         <div class="flex-grow-1">
                           <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
-                          <small class="text-muted">Super Admin</small>
+                          <small class="text-muted">{{ Auth::user()->faculty->faculty_name }}</small>
                         </div>
                       </div>
                     </a>
@@ -254,15 +254,6 @@
                     <a class="dropdown-item" href="#">
                       <i class="bx bx-cog me-2"></i>
                       <span class="align-middle">Settings</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      <span class="d-flex align-items-center align-middle">
-                        <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                        <span class="flex-grow-1 align-middle">Billing</span>
-                        <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                      </span>
                     </a>
                   </li>
                   <li>

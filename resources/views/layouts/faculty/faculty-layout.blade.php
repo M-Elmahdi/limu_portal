@@ -11,7 +11,7 @@
         <div class="app-brand demo">
           <a href="index.html" class="app-brand-link">
             <span class="app-brand-logo demo">
-              <svg
+              {{-- <svg
                 width="25"
                 viewBox="0 0 25 42"
                 version="1.1"
@@ -64,7 +64,7 @@
                     </g>
                   </g>
                 </g>
-              </svg>
+              </svg> --}}
             </span>
             <span class="app-brand-text demo menu-text fw-bolder ms-2">LIMU Portal</span>
           </a>
@@ -210,7 +210,7 @@
             <!-- Title of the Page -->
             <div class="navbar-nav align-items-center">
               <div class="nav-item d-flex align-items-center fw-bold">
-                {{ Auth::user()->faculty->faculty_name }}
+                <img class="col-md-5 col-sm-2 m-auto" src="{{ asset('assets/img/limu_logos/limu_wide_logo.png') }}" alt="">
               </div>
             </div>
             <!-- /Title of the Page -->

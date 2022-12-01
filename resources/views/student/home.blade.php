@@ -6,17 +6,13 @@
 
     <!-- Basic Bootstrap Table -->
 <div class="card">
-     
-    <h5 class="card-header text-end display-7">
-      {{ auth()->user()->student->std_fname }}
-    </h5>
     
     <div class="row d-flex justify-content-center">
       <div class="col">
-        <div class="nav-align-top mb-4">
+        <div class="nav-align-top mb-2 mt-4">
           <ul class="nav nav-tabs m-auto" role="tablist">
 
-          <li class="nav-item">
+          <li class="nav-item nav-pills">
             <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#overview" aria-controls="navs-top-home" aria-selected="true">
               Overview
             </button>
@@ -26,7 +22,7 @@
 
             @foreach($year_course as $year => $course)
 
-              <li class="nav-item">
+              <li class="nav-item nav-pills">
                 <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" data-bs-target="#{{str_replace(' ', '-', $year)}}" aria-controls="navs-top-home" aria-selected="true">
                   {{ $year }}
                 </button>
@@ -43,7 +39,39 @@
 
             <div class="tab-pane fade active show" id="overview" role="tabpanel">
               <div class="container">
-                The Overview
+                <div class="row">
+                @foreach ($year_courses as $year_course => $year)
+                    @foreach ($year as $year_key => $year_info)
+                      
+                        <div class="col-md-6 col-xl-4">
+                          <div class="card shadow-none bg-transparent border border-primary mb-3">
+                            <div class="card-body">
+                              <h5 class="card-title">{{ $year_key }}</h5>
+                                <ul class="list-group">
+                                  
+                                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Accumulative Average
+                                    <span class="badge bg-primary">{{ round($year_info['new_average'], 3) }}%</span>
+                                  </li>
+
+                                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Total ECTS
+                                    <span class="badge bg-primary">{{ $year_info['total_ects'] }}</span>
+                                  </li>
+
+                                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    Courses
+                                    <span class="badge bg-primary">{{ $year_info['courses']->count() }}</span>
+                                  </li>
+
+                                </ul>
+                            </div>
+                          </div>
+                        </div>
+                      
+                    @endforeach
+                @endforeach
+                </div>
               </div>
             </div>
 
@@ -62,12 +90,11 @@
 
                     <div class="col-auto">
                       <div class="badge bg-primary">
-                        Accumulative Average <i class="bx bx-arrow-from-left lg mb-1"></i> <span>{{ round($courses['average'], 2) }}</span>%
+                        Accumulative Average <i class="bx bx-arrow-from-left lg mb-1"></i> <span>{{ round($courses['new_average'], 2) }}</span>%
                       </div>
                     </div>
                   </div>
                   
-
                   <ul>
                     @foreach ($courses['courses'] as $course)
                  
@@ -75,7 +102,12 @@
                       <div class="card accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                           <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#course_{{ $course['course_id'] }}" aria-expanded="false" aria-controls="accordionOne">
-                            {{ $course['course_name'] }} <span class="ms-2 badge bg-secondary">{{ round($course['course_actual_mark'], 2) }}/100</span>
+                            {{-- @if ($course['credit_type'] == 'uncredit')
+                              {{ $course['course_name'] }} <span class="ms-2 badge bg-secondary">{{ round($course['raw_mark'], 2) }}/100</span>
+                            @else
+                              {{ $course['course_name'] }} <span class="ms-2 badge bg-secondary">{{ round($course['course_mark'], 2) }}/100</span>
+                            @endif --}}
+                            {{ $course['course_name'] }} <span class="ms-2 badge bg-secondary">{{ round($course['raw_mark'], 2) }}/100</span>
                           </button>
                         </h2>
   

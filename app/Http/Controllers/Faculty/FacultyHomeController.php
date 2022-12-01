@@ -35,7 +35,7 @@ class FacultyHomeController extends Controller
         $course = Course::where('course_id', $course_id)->first();
         $batch = Batch::where('batch_id', $batch_id)->first();
 
-        $exams = MainExam::with('sub_exam', 'course', 'batch')
+        $exams = MainExam::with('sub_exams', 'course', 'batch')
                     ->where('batch_id', $batch_id)
                     ->where('course_id', $course_id)
                     ->get();

@@ -286,7 +286,7 @@ class TestController extends Controller
                     'status' => $course->status,
                     'overall_weight' => $overall_weight,
                     'course_mark' => $calculated_result,
-                    'raw_course_mark' => $isSubExamBased ? $course_result * 100 / $overall_weight : $course_result * 100 / $total_benchmark,
+                    'raw_mark' => $isSubExamBased ? $course_result * 100 / $overall_weight : $course_result * 100 / $total_benchmark,
                     'total_benchmark' => $total_benchmark,
                     'course_actual_mark' => $course_result * 100 / $total_benchmark
                 ]);
