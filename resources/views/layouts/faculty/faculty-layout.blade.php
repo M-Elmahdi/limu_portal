@@ -78,12 +78,22 @@
 
         <ul class="menu-inner py-1">
           <!-- Dashboard -->
-          <li class="menu-item active">
+          <li class="menu-item @if(Route::is('faculty.batches')) active @endif">
             <a href="{{ route('faculty.batches') }}" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-circle"></i>
               <div data-i18n="Analytics">Dashboard</div>
             </a>
           </li>
+
+          <!-- Vertically centered modal Trigger -->
+          <li class="menu-item @if(Route::is('faculty.student.result')) active @endif">
+            <a href="{{ route('faculty.batches') }}" class="menu-link" data-bs-toggle="modal" data-bs-target="#modalCenter">
+              <i class="menu-icon tf-icons bx bx-search-alt"></i>
+              <div data-i18n="Analytics">Search for a student</div>
+            </a>
+          </li>
+
+          
 
           <!-- Layouts -->
           {{-- <li class="menu-item">
@@ -196,6 +206,8 @@
       <div class="layout-page">
         <!-- Navbar -->
 
+        
+
         <nav
           class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
           id="layout-navbar"
@@ -284,6 +296,48 @@
           <!-- Content -->
 
           <div class="container-xxl flex-grow-1 container-p-y">
+
+            <!-- Vertically Centered Modal -->
+              <!-- Modal -->
+            <form action="{{ route('faculty.student.result') }}" method="POST">
+              @csrf
+              <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalCenterTitle">Search for a student result</h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col mb-3">
+                          <label for="nameWithTitle" class="form-label">Student Number</label>
+                          <input
+                            type="number"
+                            name="std_id"
+                            class="form-control"
+                            placeholder="Enter Student Number"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Cancel
+                      </button>
+                      <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+            
             
             @yield('content-bla')
 

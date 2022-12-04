@@ -3,9 +3,28 @@
 @section('content-bla')
 <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{{ Auth::user()->faculty->faculty_name }} /</span> Batches</h4>
 
+@if (session('error'))
+<div class=" m-3">
+
+  <div class="bs-toast toast fade show bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <i class="bx bx-bell me-2"></i>
+      <div class="me-auto fw-semibold">Error</div>
+      <small>Just now</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      {{ session('error') }}    
+    </div>
+  </div>
+
+</div>
+@endif
+
 <!-- Basic Bootstrap Table -->
 <div class="card">
-  <h5 class="card-header">Table Basic</h5>
+
+  <h5 class="card-header"></h5>
   <div class="table-responsive text-nowrap">
     <table class="table">
       <thead>
@@ -69,5 +88,7 @@
     </table>
   </div>
 </div>
+
+
 <!--/ Basic Bootstrap Table -->
 @endsection

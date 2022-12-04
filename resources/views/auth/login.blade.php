@@ -6,13 +6,20 @@
 
 <div class="container-xxl">
     <div class="authentication-wrapper authentication-basic container-p-y">
+
+      
       <div class="authentication-inner">
         <!-- Register -->
         <div class="card">
           <div class="card-body">
+
+            <div class="d-flex justify-content-center mb-3">
+              <img class="col-12" src="{{ asset('assets/img/limu_logos/limu_wide_logo.png') }}" alt="">
+            </div>
+              
             <!-- Logo -->
             <div class="app-brand justify-content-center">
-              <a href="index.html" class="app-brand-link gap-2">
+              <a class="app-brand-link gap-2">
                 <span class="app-brand-logo demo">
                   <svg
                     width="25"
