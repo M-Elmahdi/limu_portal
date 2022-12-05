@@ -5,6 +5,24 @@
   <span class="text-muted fw-light">{{ Auth::user()->faculty->faculty_name }} / {{ $batch->batch_name }} / </span> Courses
 </h4>
 
+@if (session('error'))
+  <div class=" m-3">
+
+    <div class="bs-toast toast fade show bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bx bx-bell me-2"></i>
+        <div class="me-auto fw-semibold">Error</div>
+        <small>Just now</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        {{ session('error') }}    
+      </div>
+    </div>
+
+  </div>
+@endif
+
 <!-- Basic Bootstrap Table -->
 <div class="card">
   {{-- <h5 class="card-header">Table Basic</h5> --}}

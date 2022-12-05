@@ -7,7 +7,6 @@ use App\Models\sis\StudentDetail;
 use Illuminate\Http\Request;
 use App\Models\sis\BatchCourse;
 use App\Models\sis\MainExam;
-use App\Models\sis\Course;
 use App\Models\sis\MainExamReset;
 use App\Models\sis\PreviousBatchYear;
 use App\Models\sis\StudentRepeatCourse;
@@ -18,10 +17,9 @@ class SearchStudentResultController extends Controller
 {
     public function index(Request $request){
 
-        //fetch the input request 
-        $this->validate($request, [
-            'std_id' => ['required']
-        ]);
+        if($request->std_id == null){
+            return redirect()->back()->with('error', 'The field cannot be empty');
+        }
 
         $student = StudentDetail::where('std_id', $request->std_id)->first();
 
@@ -30,12 +28,14 @@ class SearchStudentResultController extends Controller
         }
 
         if($student->std_faculty_id !== auth()->user()->faculty_id){
-            return redirect()->back()->with('error', 'Sorry, Student does not belong to this faculty '.$request->std_id);
+            return redirect()->back()->with('error', 'Sorry, student does not belong to this faculty '.$request->std_id);
         }
 
         $year_courses = $this->fetchStudentResult($student);
 
-        return view('faculty.student_results')->with('year_courses', $year_courses)->with('student', $student);
+        return view('faculty.student_results')
+            ->with('year_courses', $year_courses)
+            ->with('student', $student);
     }
 
     private function fetchStudentResult($student){

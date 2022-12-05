@@ -65,7 +65,7 @@ Route::group(['prefix' => 'faculty', 'middleware' => ['auth', 'role:Faculty', 'v
     Route::get('batch-courses/{id}', [FacultyHomeController::class, 'showBatchCourses'])->name('faculty.index');
     Route::get('exams/{batch_id}/{course_id}', [FacultyHomeController::class, 'showExams'])->name('faculty.exams');
     Route::get('students/results/{exam_id}/{batch_id}/{course_id}', [FacultyHomeController::class, 'showStudentResults'])->name('faculty.main-exam.results');
-    Route::post('student/search', [SearchStudentResultController::class, 'index'])->name('faculty.student.result');
+    Route::get('student/search', [SearchStudentResultController::class, 'index'])->name('faculty.student.result');
 });
 
 

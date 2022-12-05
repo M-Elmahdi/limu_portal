@@ -4,6 +4,24 @@
 
 <div class="container-xxl flex-grow-1 container-p-y">
 
+@if (session('error'))
+  <div class=" m-3">
+
+    <div class="bs-toast toast fade show bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <i class="bx bx-bell me-2"></i>
+        <div class="me-auto fw-semibold">Error</div>
+        <small>Just now</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        {{ session('error') }}    
+      </div>
+    </div>
+
+  </div>
+@endif
+
 <div class="card m-1">
     <div class="list-group">
         <div class="list-group-item">Student Number\ <span class="text-primary">{{ $student->std_id }}</span></div>
