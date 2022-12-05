@@ -300,8 +300,6 @@
             <!-- Vertically Centered Modal -->
               <!-- Modal -->
             <form action="{{ route('faculty.student.result') }}" method="GET">
-              @csrf
-              @method('GET')
               <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
